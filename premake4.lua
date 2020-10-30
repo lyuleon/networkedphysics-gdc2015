@@ -9,67 +9,75 @@ solution "Protocol"
 
 project "Core"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "StaticLib"
-    files { "src/Core/*.h", "src/Core/*.cpp" }
+    files { "src/core/*.h", "src/core/*.cpp" }
+	location "build"
     targetdir "lib"
 
 project "Network"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "StaticLib"
     files { "src/network/*.h", "src/network/*.cpp" }
     links { "Core" }
+	location "build"
     targetdir "lib"
 
 project "Protocol"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "StaticLib"
     files { "src/protocol/*.h", "src/protocol/*.cpp" }
     links { "Core", "Network" }
+	location "build"
     targetdir "lib"
 
 project "ClientServer"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "StaticLib"
     files { "src/ClientServer/*.h", "src/ClientServer/*.cpp" }
     links { "Core", "Network", "Protocol" }
+	location "build"
     targetdir "lib"
 
 project "VirtualGo"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "StaticLib"
     files { "src/VirtualGo/*.h", "src/VirtualGo/*.cpp" }
     links { "Core" }
+	location "build"
     targetdir "lib"
 
 project "Cubes"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "StaticLib"
-    files { "src/Cubes/*.h", "src/Cubes/*.cpp" }
+    files { "src/cubes/*.h", "src/cubes/*.cpp" }
     links { "Core" }
+	location "build"
     targetdir "lib"
 
 project "nvImage"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "StaticLib"
     files { "external/nvImage/*.h", "external/nvImage/*.cpp" }
+	location "build"
     targetdir "lib"
 
 project "tinycthread"
     language "C"
     kind "StaticLib"
     files { "external/tinycthread/*.h", "external/tinycthread/*.c" }
+	location "build"
     targetdir "lib"
 
 project "TestCore"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/Core/*.cpp" }
     links { "Core" }
@@ -78,7 +86,7 @@ project "TestCore"
 
 project "TestNetwork"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/Network/Test*.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer" }
@@ -87,7 +95,7 @@ project "TestNetwork"
 
 project "TestProtocol"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/Protocol/Test*.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer" }
@@ -96,7 +104,7 @@ project "TestProtocol"
 
 project "TestClientServer"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/ClientServer/Test*.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer" }
@@ -105,7 +113,7 @@ project "TestClientServer"
 
 project "TestVirtualGo"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/VirtualGo/*.cpp" }
     links { "Core", "VirtualGo", "ode" }
@@ -114,7 +122,7 @@ project "TestVirtualGo"
 
 project "SoakProtocol"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/Protocol/SoakProtocol.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer" }
@@ -123,7 +131,7 @@ project "SoakProtocol"
 
 project "SoakClientServer"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/ClientServer/SoakClientServer.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer" }
@@ -132,7 +140,7 @@ project "SoakClientServer"
 
 project "ProfileProtocol"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/Protocol/ProfileProtocol.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer" }
@@ -141,7 +149,7 @@ project "ProfileProtocol"
 
 project "ProfileClientServer"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tests/ClientServer/ProfileClientServer.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer" }
@@ -150,7 +158,7 @@ project "ProfileClientServer"
 
 project "FontTool"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tools/Font/*.cpp" }
     links { "Core", "Freetype", "Jansson" }
@@ -159,7 +167,7 @@ project "FontTool"
 
 project "StoneTool"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "tools/Stone/*.cpp" }
     links { "Core", "VirtualGo", "Jansson" }
@@ -168,7 +176,7 @@ project "StoneTool"
 
 project "Client"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "src/game/*.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer", "VirtualGo", "Cubes", "nvImage", "tinycthread", "ode", "glew", "glfw3", "GLUT.framework", "OpenGL.framework", "Cocoa.framework", "CoreVideo.framework", "IOKit.framework" }
@@ -178,9 +186,10 @@ project "Client"
 
 project "Server"
     language "C++"
-    buildoptions "-std=c++11 -stdlib=libc++ -Wno-deprecated-declarations"
+    buildoptions "-std=c++11"
     kind "ConsoleApp"
     files { "src/game/*.cpp" }
+	libdirs {"/usr/local/ode/lib"}
     links { "Core", "Network", "Protocol", "ClientServer", "Cubes", "ode" }
     location "build"
     targetdir "bin"
