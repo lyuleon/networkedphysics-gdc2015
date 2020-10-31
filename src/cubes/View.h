@@ -12,6 +12,7 @@
 #include "vectorial/mat4f.h"
 #include "vectorial/quat4f.h"
 #include "core/Core.h"
+#include <stdint.h>
 #include <map>
 
 namespace view

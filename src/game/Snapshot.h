@@ -1099,9 +1099,9 @@ struct QuantizedSnapshot_HighPrecision
 };
 
 static void InterpolateSnapshot_Linear( float t, 
-                                        const __restrict CubeState * a, 
-                                        const __restrict CubeState * b, 
-                                        __restrict view::ObjectUpdate * output )
+                                        const CubeState * a, 
+                                        const CubeState * b, 
+                                        view::ObjectUpdate * output )
 {
     for ( int i = 0; i < NumCubes; ++i )
     {
@@ -1132,9 +1132,9 @@ inline void hermite_spline( float t,
 
 static void InterpolateSnapshot_Hermite( float t, 
                                          float step_size,
-                                         const __restrict CubeState * a, 
-                                         const __restrict CubeState * b, 
-                                         __restrict view::ObjectUpdate * output )
+                                         const CubeState * a, 
+                                         const CubeState * b, 
+                                         view::ObjectUpdate * output )
 {
     for ( int i = 0; i < NumCubes; ++i )
     {
@@ -1152,9 +1152,9 @@ static void InterpolateSnapshot_Hermite( float t,
 static void InterpolateSnapshot_Hermite_WithExtrapolation( float t, 
                                                            float step_size,
                                                            float extrapolation,
-                                                           const __restrict CubeState * a, 
-                                                           const __restrict CubeState * b, 
-                                                           __restrict view::ObjectUpdate * output )
+                                                           const CubeState * a, 
+                                                           const CubeState * b, 
+                                                           view::ObjectUpdate * output )
 {
     for ( int i = 0; i < NumCubes; ++i )
     {

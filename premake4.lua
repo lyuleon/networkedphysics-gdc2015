@@ -1,7 +1,9 @@
-solution "Protocol"
+solution "NetworkPhysics"
     includedirs { "src", "external", "tools", "." }
     platforms { "x64" }
     configurations { "Release", "Debug" }
+    includedirs {"/usr/local/ode/include","/usr/local/jansson/include",
+    "/usr/local/freetype/include"}
     flags { "Symbols", "ExtraWarnings", "EnableSSE2", "FloatFast" , "NoRTTI", "NoExceptions" }
     configuration "Debug" --Release"
         flags { "OptimizeSpeed" }
@@ -9,188 +11,193 @@ solution "Protocol"
 
 project "Core"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "StaticLib"
     files { "src/core/*.h", "src/core/*.cpp" }
-	location "build"
+    location "build"
     targetdir "lib"
 
 project "Network"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "StaticLib"
     files { "src/network/*.h", "src/network/*.cpp" }
     links { "Core" }
-	location "build"
+    location "build"
     targetdir "lib"
 
 project "Protocol"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "StaticLib"
     files { "src/protocol/*.h", "src/protocol/*.cpp" }
     links { "Core", "Network" }
-	location "build"
+    location "build"
     targetdir "lib"
 
 project "ClientServer"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "StaticLib"
     files { "src/ClientServer/*.h", "src/ClientServer/*.cpp" }
     links { "Core", "Network", "Protocol" }
-	location "build"
+    location "build"
     targetdir "lib"
 
 project "VirtualGo"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "StaticLib"
-    files { "src/VirtualGo/*.h", "src/VirtualGo/*.cpp" }
-    links { "Core" }
-	location "build"
+    files { "src/virtualgo/*.h", "src/virtualgo/*.cpp" }
+    libdirs {"/usr/local/ode/lib"}
+    links { "Core", "ode"}
+    location "build"
     targetdir "lib"
 
 project "Cubes"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "StaticLib"
     files { "src/cubes/*.h", "src/cubes/*.cpp" }
     links { "Core" }
-	location "build"
+    location "build"
     targetdir "lib"
 
 project "nvImage"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "StaticLib"
     files { "external/nvImage/*.h", "external/nvImage/*.cpp" }
-	location "build"
+    location "build"
     targetdir "lib"
 
 project "tinycthread"
     language "C"
     kind "StaticLib"
     files { "external/tinycthread/*.h", "external/tinycthread/*.c" }
-	location "build"
+    location "build"
     targetdir "lib"
 
 project "TestCore"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
-    files { "tests/Core/*.cpp" }
+    files { "tests/core/*.cpp" }
     links { "Core" }
     location "build"
     targetdir "bin"
 
 project "TestNetwork"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
-    files { "tests/Network/Test*.cpp" }
-    links { "Core", "Network", "Protocol", "ClientServer" }
+    files { "tests/network/Test*.cpp" }
+    links { "ClientServer", "Core", "Network", "Protocol"}
     location "build"
     targetdir "bin"
 
 project "TestProtocol"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
-    files { "tests/Protocol/Test*.cpp" }
-    links { "Core", "Network", "Protocol", "ClientServer" }
+    files { "tests/protocol/Test*.cpp" }
+    links { "ClientServer", "Core", "Network", "Protocol"}
     location "build"
     targetdir "bin"
 
 project "TestClientServer"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
     files { "tests/ClientServer/Test*.cpp" }
-    links { "Core", "Network", "Protocol", "ClientServer" }
+    links { "ClientServer", "Core", "Network", "Protocol"}
     location "build"
     targetdir "bin"
 
 project "TestVirtualGo"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
-    files { "tests/VirtualGo/*.cpp" }
+    files { "tests/virtualgo/*.cpp" }
+    libdirs {"/usr/local/ode/lib"}
     links { "Core", "VirtualGo", "ode" }
     location "build"
     targetdir "bin"
 
 project "SoakProtocol"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
-    files { "tests/Protocol/SoakProtocol.cpp" }
-    links { "Core", "Network", "Protocol", "ClientServer" }
+    files { "tests/protocol/SoakProtocol.cpp" }
+    links { "ClientServer", "Core", "Network", "Protocol"}
     targetdir "bin"
     location "build"
 
 project "SoakClientServer"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
     files { "tests/ClientServer/SoakClientServer.cpp" }
-    links { "Core", "Network", "Protocol", "ClientServer" }
+    links { "ClientServer", "Core", "Network", "Protocol"}
     targetdir "bin"
     location "build"
 
 project "ProfileProtocol"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
-    files { "tests/Protocol/ProfileProtocol.cpp" }
+    files { "tests/protocol/ProfileProtocol.cpp" }
     links { "Core", "Network", "Protocol", "ClientServer" }
     targetdir "bin"
     location "build"
 
 project "ProfileClientServer"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
     files { "tests/ClientServer/ProfileClientServer.cpp" }
-    links { "Core", "Network", "Protocol", "ClientServer" }
+    links { "ClientServer", "Core", "Network", "Protocol"}
     targetdir "bin"
     location "build"
 
 project "FontTool"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
     files { "tools/Font/*.cpp" }
-    links { "Core", "Freetype", "Jansson" }
+    libdirs {"/usr/local/jansson/lib","/usr/local/freetype/lib"}
+    links { "Core", "freetype", "jansson" }
     location "build"
     targetdir "bin"
 
 project "StoneTool"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
     files { "tools/Stone/*.cpp" }
-    links { "Core", "VirtualGo", "Jansson" }
+    libdirs {"/usr/local/jansson/lib"}
+    links { "Core", "VirtualGo", "jansson" }
     location "build"
     targetdir "bin"
 
 project "Client"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
     files { "src/game/*.cpp" }
-    links { "Core", "Network", "Protocol", "ClientServer", "VirtualGo", "Cubes", "nvImage", "tinycthread", "ode", "glew", "glfw3", "GLUT.framework", "OpenGL.framework", "Cocoa.framework", "CoreVideo.framework", "IOKit.framework" }
+    libdirs {"/usr/local/ode/lib"}
+    links { "ClientServer", "Core", "Network", "Protocol", "VirtualGo", "Cubes", "nvImage", "tinycthread", "ode", "pthread", "GL", "GLU", "GLEW", "glfw3",  "m", "Xrandr", "Xi", "X11", "Xxf86vm", "dl", "Xinerama", "Xcursor"}
     location "build"
     targetdir "bin"
     defines { "CLIENT" }
 
 project "Server"
     language "C++"
-    buildoptions "-std=c++11"
+    buildoptions {"-std=c++11"}
     kind "ConsoleApp"
-    files { "src/game/*.cpp" }
-	libdirs {"/usr/local/ode/lib"}
-    links { "Core", "Network", "Protocol", "ClientServer", "Cubes", "ode" }
+    files { "src/game/*.h","src/game/*.cpp" }
+    libdirs {"/usr/local/ode/lib"}
+    links { "ClientServer", "Core", "Network", "Protocol", "Cubes", "ode", "pthread"}
     location "build"
     targetdir "bin"
 

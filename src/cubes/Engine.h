@@ -11,6 +11,7 @@
 #include "Mathematics.h"
 #include "Activation.h"
 #include "Simulation.h"
+#include <algorithm>
 #include <list>
 
 namespace cubes

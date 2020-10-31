@@ -705,7 +705,7 @@ void CubesRender::RenderCubes( const view::Cubes & cubes )
 }
 
 inline void GenerateSilhoutteVerts( int & vertex_index,
-                                    __restrict vectorial::vec3f * vertices,
+                                    vectorial::vec3f * vertices,
                                     const vectorial::mat4f & transform,
                                     const vectorial::vec3f & local_light,
                                     const vectorial::vec3f & world_light,

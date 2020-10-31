@@ -9,6 +9,10 @@
 
 #include "Config.h"
 #include "Mathematics.h"
+#include <string.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <vector>
 
 namespace activation

@@ -2,6 +2,7 @@
 #include "Global.h"
 #include "Console.h"
 #include "ReplayManager.h"
+#include <string.h>
 #include <string>
 
 static char commandLineBuffer[CommandLineBufferSize];

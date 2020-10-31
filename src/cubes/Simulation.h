@@ -9,6 +9,7 @@
 
 #include "Config.h"
 #include "Mathematics.h"
+#include <stdint.h>
 #include <vector>
 
 namespace cubes

@@ -8,6 +8,7 @@
 #include "core/Core.h"
 #include "core/File.h"
 #include "ToolMesh.h"
+#include <algorithm>
 
 using namespace virtualgo;
 

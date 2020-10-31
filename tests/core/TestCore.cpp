@@ -3,6 +3,7 @@
 #include "core/Array.h"
 #include "core/Hash.h"
 #include "core/Queue.h"
+#include <time.h>
 #include <string.h>
 #include <algorithm>
 
